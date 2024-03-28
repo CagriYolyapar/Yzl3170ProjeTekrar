@@ -1,10 +1,13 @@
+using Project.BLL.ServiceInjection;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-WebApplication app = builder.Build();
+builder.Services.AddDbContextServices();
 
+WebApplication app = builder.Build();
 
 
 // Configure the HTTP request pipeline.

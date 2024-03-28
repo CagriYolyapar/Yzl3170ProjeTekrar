@@ -69,12 +69,12 @@ namespace Project.DAL.Repositories.Concretes
 
         public List<T> GetModifiends()
         {
-            throw new NotImplementedException();
+            return _db.Set<T>().Where(x => x.Status == ENTITIES.Enums.DataStatus.Updated).ToList();
         }
 
         public List<T> GetPassives()
         {
-            throw new NotImplementedException();
+            return _db.Set<T>().Where(x => x.Status == ENTITIES.Enums.DataStatus.Deleted).ToList();
         }
     }
 }

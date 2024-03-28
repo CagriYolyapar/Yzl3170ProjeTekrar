@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Project.ENTITIES.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Project.CONF.Options
         {
             base.Configure(builder);
             builder.HasMany(x => x.Products).WithOne(x => x.Category).HasForeignKey(x => x.CategoryID);
+           
         }
     }
 }

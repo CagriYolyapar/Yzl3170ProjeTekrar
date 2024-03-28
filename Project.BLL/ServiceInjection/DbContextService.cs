@@ -19,7 +19,7 @@ namespace Project.BLL.ServiceInjection
 
             IConfiguration configuration = serviceProvider.GetService<IConfiguration>();
 
-            services.AddDbContextPool<MyContext>(options => options.UseSqlServer(configuration.GetConnectionString("MetinConnection")).UseLazyLoadingProxies());
+            services.AddDbContextPool<MyContext>(options => options.UseSqlServer(configuration.GetConnectionString("CihanConnection")).UseLazyLoadingProxies());
 
             return services;
         } 

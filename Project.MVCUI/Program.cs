@@ -1,4 +1,4 @@
-using Project.BLL.ServiceInjection;
+﻿using Project.BLL.ServiceInjection;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -30,10 +30,8 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
-app.UseStaticFiles();
-
+app.UseStaticFiles(); //wwwroute'ye ulaşmayı sağlar demektir.
 app.UseRouting();
-
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();

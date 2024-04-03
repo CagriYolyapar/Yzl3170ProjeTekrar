@@ -17,6 +17,10 @@ builder.Services.AddSession(x =>
 builder.Services.AddIdentityServices();
 builder.Services.AddDbContextServices();
 
+builder.Services.AddRepositoryServices();
+
+builder.Services.AddManagerServices();
+
 
 WebApplication app = builder.Build();
 

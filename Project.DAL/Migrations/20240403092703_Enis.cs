@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Project.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class MTN57 : Migration
+    public partial class Enis : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

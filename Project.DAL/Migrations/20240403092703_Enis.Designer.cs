@@ -12,8 +12,8 @@ using Project.DAL.ContextClasses;
 namespace Project.DAL.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20240328095532_MTN57")]
-    partial class MTN57
+    [Migration("20240403092703_Enis")]
+    partial class Enis
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

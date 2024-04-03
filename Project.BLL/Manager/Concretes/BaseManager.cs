@@ -4,6 +4,7 @@ using Project.ENTITIES.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,54 +13,71 @@ namespace Project.BLL.Manager.Concretes
     public class BaseManager<T> : IManager<T> where T : class , IEntity
     {
         protected readonly IRepository<T> _repository;
+
+        public BaseManager(IRepository<T> repository)
+        {
+            _repository = repository; 
+        }
+
         public void Add(T item)
         {
-            throw new NotImplementedException();
+            //Todo : implement busines logic here
+            _repository.Add(item);
         }
 
         public void AddRange(List<T> list)
         {
-            throw new NotImplementedException();
+            _repository.AddRange(list);
         }
 
         public void Delete(T item)
         {
-            throw new NotImplementedException();
+            _repository.Delete(item);
         }
 
         public void DeleteRange(List<T> list)
         {
-            throw new NotImplementedException();
+            _repository.DestroyRange(list);
         }
 
-        public void Destroy(T item)
+        public string Destroy(T item)
         {
-            throw new NotImplementedException();
+            if (item.Status == ENTITIES.Enums.DataStatus.Deleted)
+            {
+                _repository.Destroy(item);
+                return "Silme İşlemi Başarılı";
+            }
+            return $"Lütfen {item.ID} ID li veriyi önce pasife çekin";
         }
 
         public void DestroyRange(List<T> list)
         {
-            throw new NotImplementedException();
+            _repository.DestroyRange(list);
         }
 
         public List<T> GetActives()
         {
-            throw new NotImplementedException();
+           return _repository.GetActives();
         }
 
         public List<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _repository.GetAll();
         }
 
         public List<T> GetModifiends()
         {
-            throw new NotImplementedException();
+            return _repository.GetModifiends();
         }
 
         public List<T> GetPassives()
         {
-            throw new NotImplementedException();
+            return _repository.GetPassives();
+        }
+
+        public List<T> Where(Expression<Func<T, bool>> exp)
+        {
+            return _repository.Where(exp);
         }
     }
 }

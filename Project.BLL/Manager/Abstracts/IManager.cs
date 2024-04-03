@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,8 +24,12 @@ namespace Project.BLL.Manager.Abstracts
         void AddRange(List<T> list);
         void Delete(T item);
         void DeleteRange(List<T> list);
-        void Destroy(T item);
+        string Destroy(T item);
         void DestroyRange(List<T> list);
+
+        //Linq Commands
+
+        List<T> Where(Expression<Func<T, bool>> exp);
 
 
     }

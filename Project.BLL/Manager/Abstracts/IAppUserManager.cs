@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.DAL.Repositories.Abstracts
+namespace Project.BLL.Manager.Abstracts
 {
-    public interface IAppUserRepository : IRepository<AppUser>
+    public interface IAppUserManager : IManager<AppUser>
     {
-        void Deneme();
     }
 }

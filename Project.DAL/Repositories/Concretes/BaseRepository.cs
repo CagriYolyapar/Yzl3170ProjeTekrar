@@ -4,6 +4,7 @@ using Project.ENTITIES.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -58,7 +59,7 @@ namespace Project.DAL.Repositories.Concretes
 
         public List<T> GetActives()
         {
-            return _db.Set<T>().Where(x=>x.Status!= ENTITIES.Enums.DataStatus.Deleted).ToList();
+            return Where(x => x.Status != ENTITIES.Enums.DataStatus.Deleted);
         }
 
         public List<T> GetAll()
@@ -69,12 +70,17 @@ namespace Project.DAL.Repositories.Concretes
 
         public List<T> GetModifiends()
         {
-            return _db.Set<T>().Where(x => x.Status == ENTITIES.Enums.DataStatus.Updated).ToList();
+            return Where(x => x.Status == ENTITIES.Enums.DataStatus.Updated);
         }
 
         public List<T> GetPassives()
         {
-            return _db.Set<T>().Where(x => x.Status == ENTITIES.Enums.DataStatus.Deleted).ToList();
+            return Where(x => x.Status == ENTITIES.Enums.DataStatus.Deleted);
+        }
+
+        public List<T> Where(Expression<Func<T, bool>> exp)
+        {
+            return _db.Set<T>().Where(exp).ToList();
         }
     }
 }
